@@ -1,0 +1,41 @@
+Soumye Singhal(150728) and Siddartha Saxena (150719)
+
+We have used 2 techniques for doing this task.
+
+------------------------------------
+Pre-Requisites NLTK with these Packages
+wordnet
+stopwords
+punkt
+==================================
+Scikit Learn for algorrithms like PCA and metrics
+------------------------------------
+
+
+
+PARSER 
+We have in general used stemming,lemmatization and stopword removal using NLTK to form good search queries before passing them to the algorithms.
+
+
+Approach 1: Attention Mechanism
+run 'python3 attention.py'
+The steps are 
+> First we calculate attention on question words. The more distant(NGD) the word is from others the more attention weight it gets. 
+> For each option, for each word in option we calculate the distance between the option and the question wrt attention weights.
+> Predicted the option with minimum distance
+
+Approach2: Learning Word Vectors using PCA and then using eucledian distances (cosine similarity was performing worse) to compute best answer
+Step are:
+
+python wwMat.py (stores the words used and finds the word-word matrix using wiki distances)
+python word_vectors.py (uses the generated files from wwMat (wwMat.npy and word_ids.py))
+
+> We first extract the words in the corpus.
+> Then we construct the word-word similarity matrix by normalizing the wiki distance and subtracting from 1 (so similar words mean close to 1). 
+> We do PCA on this to get word vectors of dimension 25.
+> For question/option we form the sentence/phrase vector by averaging the word vectors in that.
+> Then we use eucledian Distances to predict the answer
+
+Prints the accuracy achieved
+
+NOTE: We tested our models for only couple of questions as doing it for lots of questions was proving problematic. Getting google/wiki distances were probibilisitcally leading to errors for large number of queries and for calculating for all questions (about 420x420 queries) time requireds was more than 4 days (and there were errors as mentioned above in calculating NGD/wiki distance due to data coming in wrong format).
