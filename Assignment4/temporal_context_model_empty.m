@@ -17,7 +17,8 @@ TEST_TIME = 20;
 
 % first fix the presentation schedule; I'm assuming its random
 
-schedule = [sort(round(rand(1,N_ITEMS)*ENCODING_TIME))' (1:N_ITEMS)'];
+% schedule = [sort(round(rand(1,N_ITEMS)*ENCODING_TIME))' (1:N_ITEMS)'];
+schedule = [[4,62,85,120,160,220,293,376,472,485]' (1:N_ITEMS)'];
 schedule_load = ENCODING_TIME/median(diff(schedule(:,1)));                  % variable important for parts 2,3 of assignment
 encoding = zeros(N_ITEMS,N_WORLD_FEATURES+1);
 
