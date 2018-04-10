@@ -23,13 +23,13 @@ encoding = zeros(N_ITEMS,N_WORLD_FEATURES+1);
 
 world_m = [1 2 1 2 3];              % can generate randomly for yourself
 world_var = 1;
-delta = 0.05;                       % what does this parameter affect?
-beta_param = 0.001;                 % what does this parameter affect?
+delta = 0.05;                       % what does this parameter affect?. It effects rate of change of context.
+beta_param = 0.001;                 % what does this parameter affect?. It effects association strength.
 m = 1;
 
 large_drift = 1.0;                   % Large Drift for large context changes
 small_drift = 0.05;                  % Small Drift for small context changes
-prob_mixing = 0.1;                        % Probability of having large drift
+prob_mixing = 0.1;                   % Probability of having large drift
 
 % simulating encoding
 
@@ -44,7 +44,7 @@ for time = 1:ENCODING_TIME
     % state of the world at that time.
     if(m<(N_ITEMS+1))
         if(time==schedule(m,1))
-            encoding(m,:) = [world m];                                                % encode into the encoding vector
+            encoding(m,:) = [world m];          % encode into the encoding vector
             m =  m + 1;
         end;  
     end;
@@ -58,7 +58,7 @@ while(time<ENCODING_TIME+TEST_TIME)
     else
         world_m = world_m + normrnd(small_drift,world_var);
     end
-    world = normrnd(world_m, world_var);                                                                          % model world evolution
+    world = normrnd(world_m, world_var);       % model world evolution
 
     soa = zeros(1,N_ITEMS);
 
@@ -71,8 +71,8 @@ while(time<ENCODING_TIME+TEST_TIME)
     time = time + 1;       
 end;
 
-success = length(unique(out));                                                  % success is number of unique retrievals
-display(success);                                                 % success is number of unique retrievals
+success = length(unique(out));                    % success is number of unique retrievals
+display(success);                                  % success is number of unique retrievals
 
 % humans can retrieve about 7 items effectively from memory. get this model
 % to behave like humans
