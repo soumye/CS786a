@@ -1,0 +1,16 @@
+Category1-> 
+ Drift: 0.322472635692 
+ Separation: 0.102854619981 
+ Time_nd : 0.498420405217
+Category2-> 
+ Drift: 0.114887425426 
+ Separation: 0.0967895668729 
+ Time_nd : 0.505455539122
+Category3-> 
+ Drift: 0.0989755400265 
+ Separation: 0.089241540143 
+ Time_nd : 0.530624612457
+Category4-> 
+ Drift: 0.332817266496 
+ Separation: 0.0935895447349 
+ Time_nd : 0.511286672574
